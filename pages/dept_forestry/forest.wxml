@@ -1,0 +1,15 @@
+<view class="left-view">
+  <text class='h1'> 欢迎，</text>
+  <text class='h1'> 开始查找名单吧！</text>
+  <view class="inputContainer">
+    输入生日：
+    <input class="input" name="birthday" placeholder=""
+    bindinput="birthdayInput"/>
+    <button class='search-button' bindtap="search" data-name="birth"> 查找</button>
+  </view>
+  <view class="displayContainer" wx:for="{{birthList}}" wx:key="id"> 
+    {{item['姓名']}}, {{item['出生日期']}}
+  </view>
+
+
+</view>

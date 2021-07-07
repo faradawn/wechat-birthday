@@ -1,12 +1,13 @@
 {
   "pages":[
+    "pages/dept_forestry/forest",
     "pages/index/index",
     "pages/logs/logs"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "Excel生日助手",
     "navigationBarTextStyle":"black"
   },
   "style": "v2",

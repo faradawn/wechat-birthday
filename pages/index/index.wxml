@@ -19,11 +19,13 @@
   </view>
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
-    <text> hello </text>
+  </view>
+  <view>
+    <button bindtap="goForest"> go forest </button>
   </view>
 
-  <view wx:for="{{myArr.Sheet1}}">
-    {{index}}: {{item.id}}
+  <view wx:for="{{myArr.Sheet1}}" wx:key="id" >
+    {{index}}: {{item['生日']}}
   
   </view>
 

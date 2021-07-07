@@ -11,9 +11,9 @@ Page({
     canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
     myArr: {Sheet1: [
-      {id: '1', 生日:'1999-01-23'},
-      {id: '2', 生日:'2001-01-11'},
-      {id: '3', 生日:'2001-0-11'},
+      {'id': '1', "生日":'1999-01-23', 姓名: '哈哈'},
+      {'id': '2', "生日":'2001-01-11', 姓名: '哈哈'},
+      {'id': '3', "生日":'2001-0-11', 姓名: '哈哈'},
     ]}
   },
   // end of data
@@ -26,6 +26,11 @@ Page({
   bindViewTap() {
     wx.navigateTo({
       url: '../logs/logs'
+    })
+  },
+  goForest() {
+    wx.navigateTo({
+      url: '../dept_forestry/forest'
     })
   },
   onLoad() {
