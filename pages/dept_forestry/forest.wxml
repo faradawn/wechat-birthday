@@ -1,5 +1,5 @@
 <view class="left-view">
-  <text class='h1'> 欢迎，</text>
+  <text class='h1'> 来，</text>
   <text class='h1'> 开始查找名单吧！</text>
 
   <view class="inputContainer">
