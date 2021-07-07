@@ -1,8 +1,9 @@
 {
   "pages":[
+    "pages/dept_forestry/forest/forest",
+    "pages/dept_forestry/new/new",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/dept_forestry/forest"
+    "pages/logs/logs"
   ],
   "window":{
     "backgroundTextStyle":"light",

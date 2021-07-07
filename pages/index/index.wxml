@@ -5,7 +5,8 @@
   <image src="../../assets/img/cake_logo.png"></image>
   
   <view>
-    <button bindtap="goForest"> 查找生日 </button>
+    <button bindtap="goForest"> 查找月份 </button>
+    <button bindtap="goNew"> 查找年份 </button>
   </view>
 
 </view>

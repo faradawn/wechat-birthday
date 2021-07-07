@@ -8,22 +8,36 @@ Page({
     joinList: [],
     joinLen: null,
 
-    joinInput: '',
+    joinInput: null,
     joinList: [],
     joinLen: null,
 
-    pickerArray: ['参加工作时间','入职时间'],
+    pickerArray: ['大于','小于'],
     pickerIndex: 0
 
   },
 
+  bindPicker(e) {
+    this.setData({
+      pickerIndex: e.detail.value
+    })
+    this.searchJoin(null);
+
+  },
+
   searchBirth(e){
-    this.setData({birthInput: e.detail.value})
-    var x = this.data.birthInput.toString();
+    var x;
+    if(!e.detail.value){
+      x = '01'; 
+      this.setData({birthInput: 1})
+    }else{
+      this.setData({birthInput: e.detail.value})
+      x = this.data.birthInput.toString();
+    }
     if(x.length === 1){
       x = '0'.concat(x);
     }
-    var data = require('../../assets/sheets/forest_sheet.js').forestSheet;
+    var data = require('../../../assets/sheets/forest_sheet.js').forestSheet;
     var filter1 = data.filter(ele => ele.出生日期.substring(5,7) === x);
     var filter2 = filter1.map(ele => ({
       name: ele.姓名.length === 2 ? 
@@ -51,7 +65,7 @@ Page({
         return;
       case 'second':
         this.setData({
-          joinInput: '',
+          joinInput: null,
           joinLen: null,
           joinList: []
         })
@@ -64,19 +78,17 @@ Page({
 
   // second search 
   searchJoin(e){
-    this.setData({joinInput: e.detail.value})
-    if(this.data.joinInput.length < 3)
-      return;
-    var prefix = this.data.joinInput.substring(0,2);
-    if(prefix !== ('大于' || '小于' || '等于'))
-      return;
-
+    if(e.detail.value){
+      this.setData({joinInput: e.detail.value})
+    }
+    
+    var prefix = this.data.pickerIndex;
     var day = new Date();
     var curYear = day.getFullYear();
-    var numYear = this.data.joinInput.substring(2,5);
-    var data = require('../../assets/sheets/forest_sheet.js').forestSheet;
+    var numYear = this.data.joinInput;
+    var data = require('../../../assets/sheets/forest_sheet.js').forestSheet;
 
-    if(prefix === '大于'){
+    if(prefix === 0){
       var filter1 = data.filter(ele => curYear - parseInt(ele.参加工作时间.substring(0,4)) >= numYear);
       var filter2 = filter1.map(ele => ({
         name: ele.姓名.length === 2 ? 

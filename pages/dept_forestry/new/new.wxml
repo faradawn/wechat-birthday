@@ -1,0 +1,35 @@
+<view class="left-view">
+  <text class='h1'> 接着，</text>
+  <text class='h1'> 查找出生年份吧！</text>
+
+<!-- 第二搜索框 --> 
+  <view class="inputContainer">
+    年龄：
+    <picker
+     class="picker" mode="multiSelector"
+     bindchange="bindMultiPickerChange"
+     bindcolumnchange="bindMultiPickerColumnChange" 
+     value="{{salaryIndex}}" range="{{salaryArray}}"
+    >
+　　  {{salaryArray[0][salaryIndex[0]]}}-{{salaryArray[1][salaryIndex[1]]}}
+    </picker>
+
+
+    <button class='search-button' bindtap="searchAge" style="margin-left: 20rpx" >
+      查找
+    </button>
+    <button class='search-button' bindtap="clear" style="margin-left: 20rpx" data-name="picker">
+      清空
+    </button>
+  </view>
+
+  <view style="margin-top: 10px">
+    <text wx:if="{{ageLen}}" style="color: green; "> （共{{ageLen}} 人）：</text>
+    <view class="displayContainer" wx:for="{{ageList}}" wx:key="id"> 
+      {{item['name']}}， {{item['date']}}
+    </view>
+  </view>
+
+
+
+</view>

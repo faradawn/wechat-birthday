@@ -9,7 +9,12 @@ Page({
  
   goForest() {
     wx.navigateTo({
-      url: '../dept_forestry/forest'
+      url: '../dept_forestry/forest/new'
+    })
+  },
+  goAge() {
+    wx.navigateTo({
+      url: '../dept_forestry/new/new'
     })
   },
 

@@ -11,7 +11,7 @@
     <button class='search-button' bindtap="clear" style="margin-left: 20rpx" data-name="first"> 清空</button>
   </view>
 
-  <view>
+  <view style="margin-top: 10px">
     <text wx:if="{{birthLen}}" style="color: green; font-weight: 400"> 
       {{birthInput}}月生日（ {{birthLen}} 人）：
     </text>
@@ -22,17 +22,26 @@
 
 <!-- 第二搜索框 --> 
   <view class="inputContainer">
-    参加工作工龄：
-    <input class="input" value="{{joinInput}}" type="text" 
+    参加工作：
+    <picker
+     class="picker"
+     bindchange="bindPicker"
+     value="{{pickerIndex}}" 
+     range="{{pickerArray}}"
+    >
+　　  {{pickerArray[pickerIndex]}}
+    </picker> 
+    <input class="input" value="{{joinInput}}" type="number" 
       bindinput="searchJoin" 
-      bindconfirm="searchJoin"
-      placeholder="大于30"
-      />
-    <button class='search-button' bindtap="searchBirth" style="margin-left: 20rpx"> 查找</button>
+      placeholder="30"/>
+
+  </view>
+  <view>
+    <button class='search-button' bindtap="searchJoin" style="margin-left: 20rpx" data-name="second">查找</button>
     <button class='search-button' bindtap="clear" style="margin-left: 20rpx" data-name="second">清空</button>
   </view>
 
-  <view>
+  <view style="margin-top: 10px">
     <text wx:if="{{joinLen}}" style="color: green; font-weight: 400"> {{joinInput}}工龄（{{joinLen}} 人）：</text>
     <view class="displayContainer" wx:for="{{joinList}}" wx:key="id"> 
       {{item['name']}}， {{item['date']}}
