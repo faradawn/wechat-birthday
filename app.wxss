@@ -21,26 +21,26 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-
-  margin-top: 50rpx;
+  font-size: 10pt;
+  margin-top: 70rpx;
 }
 .input {
-  width: 150rpx;
-  height: 50rpx;
+  width: 100rpx;
   border: 0.5px solid grey;
   border-radius: 5px;
+  padding: 0px 3px;
 }
 .search-button{
   padding: 7rpx;
   padding-bottom: 15rpx;
-  margin-left: 50rpx!important;
   width: 100rpx!important;
   height: 50rpx;
   font-size: 10pt;
   font-weight: 100;
 }
-.inputContainer{
-  margin-top: 50rpx;
+
+.displayContainer{
+  margin-top: 20rpx;
 }
 
 .h1 {
