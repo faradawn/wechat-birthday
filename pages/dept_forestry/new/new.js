@@ -18,7 +18,7 @@ Page({
       let currentColunm = e.detail.column; 
       let currentClounmIndex = e.detail.value; 
       let salaryArray = this.data.salaryArray;
-      console.log('修改的列为', currentColunm, '，值为', currentClounmIndex);
+
       let data = {
         salaryArray: this.data.salaryArray, 
         salaryIndex: this.data.salaryIndex 

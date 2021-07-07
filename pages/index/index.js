@@ -4,12 +4,23 @@ const app = getApp()
 
 Page({
   data: {
-    
+    password: null,
+    isClosed: true
+  },
+
+  handlePassword(e){
+    const PASSWORD = '9999';
+    this.setData({password: e.detail.value});
+    if(this.data.password === PASSWORD){
+      this.setData({isClosed: false})
+    }else{
+      this.setData({isClosed: true})
+    }
   },
  
   goForest() {
     wx.navigateTo({
-      url: '../dept_forestry/forest/new'
+      url: '../dept_forestry/forest/forest'
     })
   },
   goAge() {

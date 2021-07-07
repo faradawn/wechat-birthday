@@ -8,7 +8,7 @@ Page({
     joinList: [],
     joinLen: null,
 
-    joinInput: null,
+    joinInput: 30,
     joinList: [],
     joinLen: null,
 
@@ -21,7 +21,7 @@ Page({
     this.setData({
       pickerIndex: e.detail.value
     })
-    this.searchJoin(null);
+    this.searchJoin();
 
   },
 
@@ -65,7 +65,7 @@ Page({
         return;
       case 'second':
         this.setData({
-          joinInput: null,
+          joinInput: 30,
           joinLen: null,
           joinList: []
         })
@@ -75,20 +75,19 @@ Page({
     }
     
   },
-
+  
   // second search 
-  searchJoin(e){
-    if(e.detail.value){
-      this.setData({joinInput: e.detail.value})
-    }
+  searchJoin(){
     
-    var prefix = this.data.pickerIndex;
+    var prefix = this.data.pickerIndex.toString();
     var day = new Date();
     var curYear = day.getFullYear();
     var numYear = this.data.joinInput;
     var data = require('../../../assets/sheets/forest_sheet.js').forestSheet;
 
-    if(prefix === 0){
+
+    if(prefix === '0'){
+
       var filter1 = data.filter(ele => curYear - parseInt(ele.参加工作时间.substring(0,4)) >= numYear);
       var filter2 = filter1.map(ele => ({
         name: ele.姓名.length === 2 ? 
@@ -103,11 +102,31 @@ Page({
         joinList: filter3,
         joinLen: filter3.length
       })
-    } 
+    } else {
+
+      var filter1 = data.filter(ele => curYear - parseInt(ele.参加工作时间.substring(0,4)) <= numYear);
+      var filter2 = filter1.map(ele => ({
+        name: ele.姓名.length === 2 ? 
+        (ele.姓名.substring(0,1).concat('\xa0\xa0\xa0').concat(ele.姓名.substring(1,2))) : 
+        (ele.姓名),
+        date: ele.参加工作时间
+      }));
+      var filter3 = filter2.sort((a,b) => 
+      (parseInt(a.date.substring(0,4)) - parseInt(b.date.substring(0,4)))
+    )
+      this.setData({
+        joinList: filter3,
+        joinLen: filter3.length
+      })
+    }
+  },
+
+  bindNum(e){
+    this.setData({joinInput: e.detail.value});
+    this.searchJoin();
   },
 
   bindPickerChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       pickerIndex: e.detail.value
     })
